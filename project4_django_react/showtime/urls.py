@@ -11,9 +11,9 @@ from . import views   #the . means any sibling (same-level) file.
 
 
 urlpatterns = [
-    path('api/actors/', views.ActorList.as_view(), name='actor-list'),
-    path('api/actors/<int:pk>', views.ActorDetail.as_view(), name='actor-detail'),
-    path('api/shows/', views.ShowList.as_view(), name='show-list'),
-    path('api/shows/<int:pk>', views.ShowDetail.as_view(), name='show-detail'),
-    path('artsy/', views.Artsy_test, name='artsy'),
+    path('api/artist/', views.ArtistList.as_view(), name='artist-list'),
+    path('api/artist/<int:pk>', views.ArtistDetail.as_view(), name='artist-detail'),
+    path('api/artwork/', views.ArtworkList.as_view(), name='artwork-list'),
+    path('api/artwork/<int:pk>', views.ArtworkDetail.as_view(), name='artwork-detail'),
+    path('artsy-access/', views.Artsy_access_key, name='Artsy_access_key'),
 ]

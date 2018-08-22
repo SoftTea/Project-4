@@ -1,53 +1,38 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {Route, Switch} from 'react-router-dom';
 import './App.css';
+import MainContainer from './MainContainer';
+import Nav from './Nav';
+import About from './About'
+import Auth from './Auth';
+
+
+
+
 
 class App extends Component {
-
-
-  testFetch = async() => {
-    const testData = {
-      "actor_name": " FROM react",
-      "actor_age": "34",
-      "actor_photo_url": "aaaaaaaaa",
-      "shows": []
-  }
-    const actors = await fetch(`http://localhost:8000/api/actors/`, {method: 'POST',
-      body: JSON.stringify(testData),
-      credentials: 'include',
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-        
-      },
-      
-  });
-    const responseParse = await actors.json();
-    console.log(responseParse);
-  }
-
-  apiKey = async () => {
-    const test = await fetch('http://localhost:8000/artsy/');
-    const responseParse = await test.json();
-    
-    console.log(responseParse);
-  }
-
-  componentDidMount () {
-    this.testFetch();
-    this.apiKey();
-  }
+  // 
+  
 
   render() {
+   
+
     return (
+
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        
+        < Nav />
+        
+        <Switch>
+        
+        <Route exact path='/home' component={()=>{
+          return (<MainContainer/>)}}/>
+        <Route exact path='/about' component={About} />
+        <Route exact path='/sign-in' component={Auth} />
+        {/* <Route exact path= "/artist" component={RelatedArtists}/>  */}
+          
+
+      </Switch>
       </div>
     );
   }

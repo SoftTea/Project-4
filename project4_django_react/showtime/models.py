@@ -2,13 +2,13 @@ from django.db import models
 
 
 #one to many.
-class Actor(models.Model):
-    actor_name = models.CharField(max_length=70)
-    actor_age = models.CharField(max_length=20)
-    actor_photo_url = models.TextField()
+class Artist(models.Model):
+    artist_name = models.CharField(max_length=70)
+    artist_age = models.CharField(max_length=20)
+    artist_photo_url = models.TextField()
 
     def __str__(self):
-        return str(self.actor_name)
+        return str(self.artist_name)
 
 
 #LOOK UP an actor and see what shows they've been in.
@@ -16,14 +16,14 @@ class Actor(models.Model):
 
 #debugging:
 
-class Show(models.Model):
+class Artwork(models.Model):
 
-    show_title = models.CharField(max_length=100)
-    show_photo_url = models.TextField()
-    show_actor = models.ForeignKey(Actor, on_delete=models.CASCADE, related_name='shows')
+    artwork_title = models.CharField(max_length=100)
+    artwork_photo_url = models.TextField()
+    artwork_artist = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name='artworks')
 
     def __str__(self):
-        return str(self.show_title) #this needs to be what you show on the screen.
+        return str(self.artwork_title) #this needs to be what you show on the screen.
 
 
 #ForeignKey: Shows is saying you can tie actors to shows. it's like when you included one schema inside another one.
